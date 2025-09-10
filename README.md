@@ -15,6 +15,8 @@ A saída é exibida no log do terminal.
 ## ⚙️ Estrutura
 - `OrderService`: operações relacionadas a pedidos
 - `ShippingService`: operações relacionadas a frete
+-  `OrderController`: endpoint REST para cálculo do pedido
+- `OrderTotalDTO`: DTO que retorna código e valor total do pedido
 
 ---
 
@@ -34,3 +36,63 @@ A saída é exibida no log do terminal.
 git clone https://github.com/matheusfmf/shipment.git
 cd shipment
 ./mvnw spring-boot:run
+````
+
+## 💻 Como testar a API
+
+Você pode utilizar qualquer ferramenta de requisições HTTP com a qual se sinta mais confortável: Postman, Insomnia, Bruno ou qualquer outra de sua preferência.
+
+---
+
+### 🔹 Endpoint principal: Calcular valor total do pedido
+
+**POST** `/orders/calculate`
+
+**Exemplo 1:**
+**Request Body (JSON)**
+```json
+{
+  "code": 1034,
+  "basic": 150.0,
+  "discount": 20.0
+}
+````
+**Response Body (JSON):**
+```json
+{
+  "code": 1034,
+  "total": 132.0
+}
+````
+**Exemplo 2:**
+**Request Body (JSON)**
+```json
+{
+  "code": 2282,
+  "basic": 800.0,
+  "discount": 10.0
+}
+````
+**Response Body (JSON):**
+```json
+{
+  "code": 2282,
+  "total": 720.0
+}
+````
+**Exemplo 3:**
+**Request Body (JSON)**
+```json
+{
+  "code": 1309,
+  "basic": 95.90,
+  "discount": 0.0
+}
+````
+**Response Body (JSON):**
+```json
+{
+  "code": 1309,
+  "total": 115.90
+}
+````
