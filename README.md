@@ -80,19 +80,19 @@ Você pode utilizar qualquer ferramenta de requisições HTTP com a qual se sint
   "total": 720.0
 }
 ````
-**Exemplo 3:**
-**Request Body (JSON)**
+**GET** `/orders/lastOrder`
+
+**Retorna o último pedido cadastrado via POST /orders/calculate**
+
+**OBS:**
+**Retorna um erro caso nenhum pedido tenha sido cadastrado ainda:**
 ```json
 {
-  "code": 1309,
-  "basic": 95.90,
-  "discount": 0.0
+  "timestamp": "2025-09-17T01:30:00.123+00:00",
+  "status": 500,
+  "error": "Internal Server Error",
+  "message": "Nenhum pedido cadastrado ainda!",
+  "path": "/orders/last"
 }
-````
-**Response Body (JSON):**
-```json
-{
-  "code": 1309,
-  "total": 115.90
-}
+
 ````
